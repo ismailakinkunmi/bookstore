@@ -19,11 +19,11 @@ function Navbar() {
       <h1>Bookstore CMS</h1>
       <ul>
         {links.map((link) => (
-          <li key={link.id}>
+          <div key={link.id}>
             <Link to={link.path}>
               <li>{link.text}</li>
             </Link>
-          </li>
+          </div>
         ))}
       </ul>
     </nav>
