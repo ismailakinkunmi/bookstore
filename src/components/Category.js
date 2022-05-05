@@ -1,7 +1,7 @@
 import React from "react";
 
 function Category() {
-  return <h1>under construction</h1>;
+  return <h3>Under Construction</h3>;
 }
 
 export default Category;
