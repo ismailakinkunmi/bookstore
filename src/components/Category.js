@@ -7,18 +7,21 @@ function Category() {
   const dispatch = useDispatch();
 
   const checkStatus = () => {
-    dispatch(checkStatusAction);
+    dispatch(checkStatusAction());
   };
+
   return (
-    <button
-      type="button"
-      onClick={() => {
-        checkStatus();
-      }}
-    >
-      Check Status
-      {categoryStore}
-    </button>
+    <>
+      <button
+        type="button"
+        onClick={() => {
+          checkStatus();
+        }}
+      >
+        Check Status
+      </button>
+      <h3>{categoryStore}</h3>
+    </>
   );
 }
 

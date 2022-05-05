@@ -11,7 +11,7 @@ export const checkStatusAction = () => ({ type: STATUS });
 
 const categoriesReducers = (state = initialState, action) => {
   if (action.type === STATUS) {
-    return "Under Construction";
+    return [...state, "under construction"];
   }
   return state;
 };
