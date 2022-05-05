@@ -5,15 +5,15 @@ const initialState = [];
 
 // action creator
 
-export const checkStatus = () => ({ type: STATUS });
+export const checkStatusAction = () => ({ type: STATUS });
 
 // reducer
 
-const statusReducers = (state = initialState, action) => {
+const categoriesReducers = (state = initialState, action) => {
   if (action.type === STATUS) {
     return "Under Construction";
   }
   return state;
 };
 
-export default statusReducers;
+export default categoriesReducers;

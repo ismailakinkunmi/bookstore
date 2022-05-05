@@ -2,7 +2,23 @@
 const ADDED_BOOK = "bookstore/books/ADDED_BOOK";
 const REMOVED_BOOK = "bookstore/books/REMOVED_BOOK";
 
-const initialState = [];
+const initialState = [
+  {
+    id: 1,
+    title: "redux book",
+    author: "redux",
+  },
+  {
+    id: 2,
+    title: "react book",
+    author: "react",
+  },
+  {
+    id: 3,
+    title: "javascript book",
+    author: "vanilla",
+  },
+];
 
 // action creators
 export const addBook = (payload) => ({ type: ADDED_BOOK, payload });
