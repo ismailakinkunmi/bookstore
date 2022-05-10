@@ -1,11 +1,10 @@
-# BookStore CMS
+# BookStore
 
 ## Tecnologies Used
 
 - React
 - Redux
 - CSS
-- JSX
 
 ## Usage
 
