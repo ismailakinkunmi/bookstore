@@ -1,6 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [];
+const initialState = [
+  {
+    id: 1,
+    title: "redux book",
+    author: "redux",
+  },
+  {
+    id: 2,
+    title: "react book",
+    author: "react",
+  },
+  {
+    id: 3,
+    title: "javascript book",
+    author: "vanilla",
+  },
+];
 
 export const bookSlice = createSlice({
   name: "book",
