@@ -1,73 +1,59 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { addBook } from "../redux/books/books";
+import { addedBook } from "../redux/books/books";
 
 function Form() {
   const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
 
-  const handleTitleChange = (e) => {
-    setTitle(e.target.value);
-  };
-  const handleAuthorChange = (e) => {
-    setAuthor(e.target.value);
-  };
+  const [book, setBook] = useState({
+    title: "",
+    author: "",
+  });
 
-  const submitBookToStore = () => {
-    const newBook = {
-      id: uuidv4(),
-      title,
-      author,
-    };
-    dispatch(addBook(newBook));
+  const handleOnChange = (e) => {
+    setBook({
+      ...book,
+      [e.target.name]: e.target.value,
+    });
   };
 
-  const handleSubmit = (e) => {
+  const submitBookToStore = (e) => {
     e.preventDefault();
-    e.target.children[1].children[0].value = null;
-    e.target.children[1].children[1].value = null;
-    setTitle("");
-    setAuthor("");
+    dispatch(
+      addedBook({ id: uuidv4(), author: book.author, title: book.title })
+    );
+
+    setBook({
+      title: "",
+      author: "",
+    });
   };
 
   return (
     <div>
       <h2>Add new book</h2>
-      <form
-        action="#"
-        onSubmit={() => {
-          handleSubmit();
-        }}
-      >
+      <form onSubmit={(e) => submitBookToStore(e)}>
         <input
           type="text"
           placeholder="Book title"
-          onChange={(e) => {
-            handleTitleChange(e);
-          }}
+          name="title"
+          onChange={handleOnChange}
+          value={book.title}
         />
         <input
           type="text"
           placeholder="Author"
-          onChange={(e) => {
-            handleAuthorChange(e);
-          }}
+          name="author"
+          onChange={handleOnChange}
+          value={book.author}
         />
         <select>
           <option>Economy</option>
           <option>Science Fiction</option>
           <option>Technolgy</option>
         </select>
-        <button
-          type="submit"
-          onClick={(e) => {
-            submitBookToStore(e);
-          }}
-        >
-          ADD BOOK
-        </button>
+        <button type="submit">ADD BOOK</button>
       </form>
     </div>
   );

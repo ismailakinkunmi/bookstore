@@ -1,25 +1,24 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeBook } from "../redux/books/books";
+import { removedBook } from "../redux/books/books";
 
 function BookCard() {
   const bookStore = useSelector((state) => state.bookReducers);
   const dispatch = useDispatch();
 
-  const handleRemove = (id) => {
-    dispatch(removeBook(id));
-  };
-
   return (
     <div>
-      {bookStore.map(({ title, author, id }) => (
-        <div key={id}>
+      {bookStore.map((book) => (
+        <div key={book.id}>
           <div className="book">
-            <h4>{title}</h4>
-            <p>{author}</p>
+            <h4>{book.title}</h4>
+            <p>{book.author}</p>
             <div className="manipulation">
               <span>Comments</span>
-              <button type="button" onClick={() => handleRemove(id)}>
+              <button
+                type="button"
+                onClick={() => dispatch(removedBook({ id: book.id }))}
+              >
                 Remove
               </button>
               <span>Edit</span>
