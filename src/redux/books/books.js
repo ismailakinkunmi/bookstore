@@ -1,38 +1,43 @@
-// Actions
-const ADDED_BOOK = "bookstore/books/ADDED_BOOK";
-const REMOVED_BOOK = "bookstore/books/REMOVED_BOOK";
+const ADD_BOOK = 'bookStore/books/ADD_BOOK';
+const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
 
-const initialState = [
-  {
-    id: 1,
-    title: "redux book",
-    author: "redux",
-  },
-  {
-    id: 2,
-    title: "react book",
-    author: "react",
-  },
-  {
-    id: 3,
-    title: "javascript book",
-    author: "vanilla",
-  },
-];
+export const addBook = (payload) => ({
+  type: ADD_BOOK,
+  payload,
+});
 
-// action creators
-export const addBook = (payload) => ({ type: ADDED_BOOK, payload });
+export const removeBook = (payload) => ({
+  type: REMOVE_BOOK,
+  payload,
+});
 
-export const removeBook = (bookId) => ({ type: REMOVED_BOOK, id: bookId });
+export const fetchData = () => (dispatch) => fetch(
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/VFbcOva4gydD84rw77of/books',
+)
+  .then((response) => response.json())
+  .then((data) => {
+    Object.keys(data).forEach((book) => {
+      dispatch({
+        type: ADD_BOOK,
+        payload: {
+          item_id: book,
+          ...data[book][0],
+        },
+      });
+    });
+  });
 
-const bookReducers = (state = initialState, action) => {
-  if (action.type === ADDED_BOOK) {
-    return [...state, action.payload];
+const initialState = [];
+
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_BOOK:
+      return [...state, action.payload];
+    case REMOVE_BOOK:
+      return state.filter((b) => b.item_id !== action.payload.id);
+    default:
+      return state;
   }
-  if (action.type === REMOVED_BOOK) {
-    return state.filter((book) => book.id !== action.id);
-  }
-  return state;
 };
 
-export default bookReducers;
+export default reducer;

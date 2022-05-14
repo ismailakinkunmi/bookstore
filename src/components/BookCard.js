@@ -1,44 +1,48 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
 import { removeBook } from "../redux/books/books";
 
-function BookCard() {
-  const bookStore = useSelector((state) => state.bookReducers);
+const BookCard = ({ id, title, category }) => {
   const dispatch = useDispatch();
 
-  const handleRemove = (id) => {
-    dispatch(removeBook(id));
+  const handleRemove = () => {
+    fetch(
+      `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/VFbcOva4gydD84rw77of/books/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    dispatch(removeBook({ id }));
   };
 
   return (
-    <div>
-      {bookStore.map(({ title, author, id }) => (
-        <div key={id}>
-          <div className="book">
-            <h4>{title}</h4>
-            <p>{author}</p>
-            <div className="manipulation">
-              <span>Comments</span>
-              <button type="button" onClick={() => handleRemove(id)}>
-                Remove
-              </button>
-              <span>Edit</span>
-            </div>
-          </div>
-          <div className="progess">
-            <p>64%</p>
-            <p>Completed</p>
-          </div>
-          <div className="chapter">
-            <p>CURRENT CHAPTER</p>
-            <p>Chapter 17</p>
-            <button type="submit">UPDATE PROGRESS</button>
-          </div>
-          <hr />
+    <>
+      <div className="details">
+        <span className="category">{category}</span>
+        <h3 className="title">{title.split(" , ")[0]}</h3>
+        <p className="author">{title.split(" , ")[1]}</p>
+        <div className="actions">
+          <button type="button">Comments</button>
+          <button type="button" onClick={handleRemove}>
+            Remove
+          </button>
+          <button type="button">Edit</button>
         </div>
-      ))}
-    </div>
+      </div>
+      <div className="chapter">
+        <span>CURRENT CHAPTER</span>
+        <p>Chapter 7</p>
+        <button type="button">UPDATE PROGRESS</button>
+      </div>
+    </>
   );
-}
+};
+
+BookCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
 
 export default BookCard;
