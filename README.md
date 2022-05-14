@@ -2,6 +2,8 @@
 
 ## This app allow the users to addbook title, author name and select one among the referenced categories, It also feature dark and light switch modes
 
+<https://www.loom.com/share/1cfd1c8279a04679980930d4030595d5>
+
 ## Tecnologies Used
 
 - React
