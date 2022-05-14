@@ -1,6 +1,7 @@
-import { useSelector } from "react-redux";
-import BookCard from "./BookCard";
-import Form from "./Form";
+import './Books.css';
+import { useSelector } from 'react-redux';
+import BookCard from './BookCard';
+import Form from './Form';
 
 const Books = () => {
   const data = useSelector(({ booksReducer }) => booksReducer);
