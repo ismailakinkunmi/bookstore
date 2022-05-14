@@ -1,62 +1,87 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { v4 as uuidv4 } from "uuid";
-import { addedBook } from "../redux/books/books";
+import { useDispatch, useSelector } from "react-redux";
+import { addBook } from "../redux/books/books";
 
-function Form() {
+const Form = () => {
+  const [title, setTitle] = useState("");
+  const [category, setCategory] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const data = useSelector(({ booksReducer }) => booksReducer);
+
   const dispatch = useDispatch();
 
-  const [book, setBook] = useState({
-    title: "",
-    author: "",
-  });
-
-  const handleOnChange = (e) => {
-    setBook({
-      ...book,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const submitBookToStore = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(
-      addedBook({ id: uuidv4(), author: book.author, title: book.title })
+
+    const book = {
+      item_id: `book_${
+        data
+          .map((b) => +b.item_id.split("_")[1])
+          .sort()
+          .reverse()[0] + 1 || 1
+      }`,
+      title: `${title.trim()} , ${author.trim()}`,
+      category,
+    };
+
+    fetch(
+      "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/VFbcOva4gydD84rw77of/books",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(book),
+      }
     );
 
-    setBook({
-      title: "",
-      author: "",
-    });
+    dispatch(addBook(book));
+
+    setTitle("");
+    setCategory("");
+    setAuthor("");
   };
 
   return (
-    <div>
-      <h2>Add new book</h2>
-      <form onSubmit={(e) => submitBookToStore(e)}>
+    <section className="form" onSubmit={handleSubmit}>
+      <h3>ADD NEW BOOK</h3>
+      <form>
         <input
           type="text"
           placeholder="Book title"
-          name="title"
-          onChange={handleOnChange}
-          value={book.title}
+          required
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
         <input
           type="text"
           placeholder="Author"
-          name="author"
-          onChange={handleOnChange}
-          value={book.author}
+          required
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
         />
-        <select>
-          <option>Economy</option>
-          <option>Science Fiction</option>
-          <option>Technolgy</option>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          required
+        >
+          <option value="" disabled>
+            Category
+          </option>
+          <option value="Fantasy">Fantasy</option>
+          <option value="Science Fiction">Science Fiction</option>
+          <option value="Dystopian">Dystopian</option>
+          <option value="Adventure">Adventure</option>
+          <option value="Romance">Romance</option>
+          <option value="Detective & Mystery">Detective & Mystery</option>
+          <option value="Horror">Horror</option>
+          <option value="Thriller">Thriller</option>
         </select>
         <button type="submit">ADD BOOK</button>
       </form>
-    </div>
+    </section>
   );
-}
+};
 
 export default Form;

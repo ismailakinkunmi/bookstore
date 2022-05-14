@@ -1,20 +1,15 @@
-/* eslint-disable comma-dangle */
-import React, { StrictMode } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import BookContainer from "./components/BookContainer";
 import store from "./redux/configureStore";
+import "./index.css";
+import App from "./App";
 
-const container = document.getElementById("root");
-
-const root = ReactDOM.createRoot(container);
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <StrictMode>
+  <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <BookContainer />
-      </Router>
+      <App />
     </Provider>
-  </StrictMode>
+  </React.StrictMode>
 );

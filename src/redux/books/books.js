@@ -1,31 +1,43 @@
-import { createSlice } from "@reduxjs/toolkit";
+const ADD_BOOK = 'bookStore/books/ADD_BOOK';
+const REMOVE_BOOK = 'bookStore/books/REMOVE_BOOK';
+
+export const addBook = (payload) => ({
+  type: ADD_BOOK,
+  payload,
+});
+
+export const removeBook = (payload) => ({
+  type: REMOVE_BOOK,
+  payload,
+});
+
+export const fetchData = () => (dispatch) => fetch(
+  'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/VFbcOva4gydD84rw77of/books',
+)
+  .then((response) => response.json())
+  .then((data) => {
+    Object.keys(data).forEach((book) => {
+      dispatch({
+        type: ADD_BOOK,
+        payload: {
+          item_id: book,
+          ...data[book][0],
+        },
+      });
+    });
+  });
 
 const initialState = [];
 
-export const bookSlice = createSlice({
-  name: "book",
-  initialState,
-  reducers: {
-    addedBook: (state, action) => {
-      const bookData = {
-        id: action.payload.id,
-        title: action.payload.title,
-        author: action.payload.author,
-      };
-      state.push(bookData);
-    },
-
-    removedBook: (state, action) => {
-      const { id } = action.payload;
-      const existingBook = state.find((book) => book.id === id);
-      if (existingBook) {
-        return state.filter((book) => book.id !== id);
-      }
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_BOOK:
+      return [...state, action.payload];
+    case REMOVE_BOOK:
+      return state.filter((b) => b.item_id !== action.payload.id);
+    default:
       return state;
-    },
-  },
-});
+  }
+};
 
-export const { addedBook, removedBook } = bookSlice.actions;
-
-export default bookSlice.reducer;
+export default reducer;
