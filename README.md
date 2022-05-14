@@ -1,5 +1,7 @@
 # BookStore
 
+## This app allow the users to addbook title, author name and select one among the referenced categories, It also feature dark and light switch modes
+
 ## Tecnologies Used
 
 - React
