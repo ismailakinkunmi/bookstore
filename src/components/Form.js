@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addBook } from "../redux/books/books";
+import './Form.css';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addBook } from '../redux/books/books';
 
 const Form = () => {
-  const [title, setTitle] = useState("");
-  const [category, setCategory] = useState("");
-  const [author, setAuthor] = useState("");
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [author, setAuthor] = useState('');
 
   const data = useSelector(({ booksReducer }) => booksReducer);
 
@@ -17,7 +18,7 @@ const Form = () => {
     const book = {
       item_id: `book_${
         data
-          .map((b) => +b.item_id.split("_")[1])
+          .map((b) => +b.item_id.split('_')[1])
           .sort()
           .reverse()[0] + 1 || 1
       }`,
@@ -26,21 +27,21 @@ const Form = () => {
     };
 
     fetch(
-      "https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/VFbcOva4gydD84rw77of/books",
+      'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/VFbcOva4gydD84rw77of/books',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(book),
-      }
+      },
     );
 
     dispatch(addBook(book));
 
-    setTitle("");
-    setCategory("");
-    setAuthor("");
+    setTitle('');
+    setCategory('');
+    setAuthor('');
   };
 
   return (

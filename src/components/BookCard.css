@@ -1,0 +1,121 @@
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white-color);
+  border-radius: 4px;
+  padding: 1rem;
+  border: 1px solid var(--gray-color);
+  font-size: 0.875rem;
+}
+
+.card span {
+  color: var(--darkgray-color);
+}
+
+.details .category {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.details .title {
+  font-size: 1.375rem;
+}
+
+.details .author {
+  color: var(--main-color);
+}
+
+.actions {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.actions p {
+  cursor: pointer;
+}
+
+.actions button {
+  background-color: transparent;
+  color: var(--main-color);
+  padding: 0;
+  font-weight: normal;
+}
+
+.actions button:hover,
+.actions button:active {
+  text-decoration: underline;
+  transform: unset;
+}
+
+.card .progress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card .svg {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin-right: 0.4rem;
+}
+
+.card .svg circle {
+  fill: transparent;
+  stroke: var(--gray-color);
+  stroke-width: 0.5rem;
+  stroke-dashoffset: 4.125rem;
+  transition: all 0.4s ease-in-out;
+}
+
+.card .bar {
+  stroke: var(--main-color) !important;
+}
+
+.card .count {
+  font-family: var(--montserrat-font);
+}
+
+.card .count p {
+  font-size: 2rem;
+}
+
+.card .chapter {
+  padding: 0 4rem 0 1.5rem;
+  border-left: 2px var(--gray-color) solid;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card .chapter p {
+  margin-bottom: 0.5rem;
+}
+
+.card .chapter button {
+  color: var(--gray-color);
+  font-weight: normal;
+}
+
+@media screen and (max-width: 740px) {
+  .card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .card .details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card .chapter {
+    padding: 1rem 0 0 0;
+    border: none;
+    align-items: center;
+    border-top: 2px var(--gray-color) solid;
+  }
+}
