@@ -10,6 +10,8 @@
 - Redux
 - CSS
 
+## Link
+This site was built using [Githu Pages] ("https://ismailakinkunmi.github.io/bookstore") 
 ## Usage
 
 - start by cloning this repository by running the following command:
