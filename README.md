@@ -12,7 +12,7 @@
 
 ## Link
 
-This site was built using [Githu Pages] ("https://ismailakinkunmi.github.io/bookstore")
+This site was built using [Githu Pages]("https://ismailakinkunmi.github.io/bookstore")
 
 ## Usage
 
