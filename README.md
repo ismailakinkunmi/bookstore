@@ -1,8 +1,10 @@
 # BookStore
 
-## This app allow the users to addbook title, author name and select one among the referenced categories, It also feature dark and light switch modes
+This app allow the users to add book title, author name and select one among the referenced categories, It also feature dark and light switch modes
 
-<https://www.loom.com/share/1cfd1c8279a04679980930d4030595d5>
+## Video Link
+
+[watch video here](https://www.loom.com/share/1cfd1c8279a04679980930d4030595d5/)
 
 ## Tecnologies Used
 
@@ -10,21 +12,25 @@
 - Redux
 - CSS
 
-## Link
-This site was built using [Githu Pages] ("https://ismailakinkunmi.github.io/bookstore") 
+## Live Demo
+
+- [click here](https://ismailakinkunmi.github.io/bookstore/)
+
 ## Usage
 
-- start by cloning this repository by running the following command:
+``` start by cloning this repository by running the following command:
 
-- git@github.com:ismailakinkunmi/bookstore.git
+ git@github.com:ismailakinkunmi/bookstore.git
 
-- cd bookstore
+ cd bookstore
 
-- code . incase of Vscode. this will open the project in VScode
+ code . incase of Vscode. this will open the project in VScode
 
-- npm install
+ npm install
 
-- npm start
+ npm start
+
+```
 
 ## Used Available Scripts
 
@@ -43,7 +49,6 @@ Builds the app for production It correctly bundles React in production mode and 
 👤 **Adekunle Ismail Akinkunmi**
 
 - GitHub: [@ismailakinkunmi](https://github.com/ismailakinkunmi)
-- Twitter: [@AkinkunmiAbiola](https://twitter.com/AkinkunmiAbiola)
 - LinkedIn: [@akinkunmi-adekunle](https://www.linkedin.com/in/adismail4/)
 
 ## Show your support
@@ -53,3 +58,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 Hat tip 👒 to microverse, code reviewers and my coding partners for there support.
+
+## 📝 License
+
+- This project is [MIT](./LICENSE) licensed.
