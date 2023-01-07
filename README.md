@@ -4,7 +4,7 @@ This app allow the users to add book title, author name and select one among the
 
 ## Video Link
 
-[watch video demo]('https://www.loom.com/share/1cfd1c8279a04679980930d4030595d5')
+[watch video here](https://www.loom.com/share/1cfd1c8279a04679980930d4030595d5/)
 
 ## Tecnologies Used
 
@@ -12,9 +12,9 @@ This app allow the users to add book title, author name and select one among the
 - Redux
 - CSS
 
-## Link
+## Live Demo
 
-- This site was built using [Github Pages]("https://ismailakinkunmi.github.io/bookstore")
+- [click here](https://ismailakinkunmi.github.io/bookstore/)
 
 ## Usage
 
@@ -58,3 +58,7 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 Hat tip 👒 to microverse, code reviewers and my coding partners for there support.
+
+## 📝 License
+
+- This project is [MIT](./LICENSE) licensed.
