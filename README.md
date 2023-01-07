@@ -1,8 +1,10 @@
 # BookStore
 
-## This app allow the users to add book title, author name and select one among the referenced categories, It also feature dark and light switch modes
+This app allow the users to add book title, author name and select one among the referenced categories, It also feature dark and light switch modes
 
-<https://www.loom.com/share/1cfd1c8279a04679980930d4030595d5>
+## Video Link
+
+[watch video demo]('https://www.loom.com/share/1cfd1c8279a04679980930d4030595d5')
 
 ## Tecnologies Used
 
@@ -12,21 +14,23 @@
 
 ## Link
 
-This site was built using [Githu Pages]("https://ismailakinkunmi.github.io/bookstore")
+- This site was built using [Github Pages]("https://ismailakinkunmi.github.io/bookstore")
 
 ## Usage
 
-- start by cloning this repository by running the following command:
+``` start by cloning this repository by running the following command:
 
-- git@github.com:ismailakinkunmi/bookstore.git
+ git@github.com:ismailakinkunmi/bookstore.git
 
-- cd bookstore
+ cd bookstore
 
-- code . incase of Vscode. this will open the project in VScode
+ code . incase of Vscode. this will open the project in VScode
 
-- npm install
+ npm install
 
-- npm start
+ npm start
+
+```
 
 ## Used Available Scripts
 
